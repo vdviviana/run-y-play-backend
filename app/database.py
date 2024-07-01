@@ -1,0 +1,1 @@
+# Contiene la configuración de la base de datos
