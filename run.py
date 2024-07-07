@@ -1,6 +1,7 @@
 from flask import Flask
 from app.views import *
-from app.database import test_connection
+from app.database import *
+from flask_cors import CORS
 
 app =Flask(__name__)
 
@@ -8,7 +9,7 @@ app =Flask(__name__)
 app.route('/', methods=['GET'])(index)
 
 # ruta funcion de la vista -> consulta usuarios
-app.route('/api/users/all', methods=['GET'])(get_users)
+app.route('/api/users/all', methods=['GET'])(get_view_users_all)
 
 # ruta de funcion de la vista -> consulta user por id
 app.route('/api/users/byid/<int:users_id>', methods=['GET'])(get_users_byid)
@@ -20,7 +21,11 @@ app.route('/api/users/create/', methods=['POST'])(create_new_user)
 app.route('/api/users/update/<int:users_id>', methods=['PUT'])(update_users_byid)
 
 # funcion de prueba de conexion a la base de datos
-test_connection()
+#test_connection()
+
+init_app(app)
+#permitir solicitudes desde cualquier origen
+CORS(app)
 
 if __name__=='__main__':
 	app.run(debug=True)
