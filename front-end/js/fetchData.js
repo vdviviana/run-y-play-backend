@@ -21,15 +21,6 @@ function  fetchData(url, method, callback, data = null) {
 /* ------------- evento click boton submit de modal ------------ */
 /* ------------- agregar nuevo usuario ------------ */
 function add_new_user(event) {   
-    /*
-        'nombre_apellido': document.getElementById("nombre_apellido").value,
-        'password' : document.getElementById("password").value,
-        'primera_conexion': '2024-07-06 00:00:00',
-        'ultima_conexion': '2024-07-06 00:00:00',
-        'foto_perfil': document.getElementById("foto_perfil").value,
-        'perfil': document.getElementById("perfil").value,
-        'estado': 'activo'
-        */
     let data = {
         'nombre_apellido': document.getElementById("nombre_apellido").value,
         'password' : document.getElementById("password").value,
