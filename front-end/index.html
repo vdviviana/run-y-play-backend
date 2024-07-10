@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- INICIO ESTILOS CSS -->
+    <link rel="stylesheet" href="css/main.css">
+    <!-- FIN ESTILOS CSS -->
+    <!-- INICIO ESTILOS BOOTSTRAP (DESCARGADO) CSS JS-->
+    <link rel="stylesheet" href="./bootstrap-5.3.3-dist/css/bootstrap.min.css">
+    <script src="./bootstrap-5.3.3-dist/js/bootstrap.min.js"></script>
+    <script src="./bootstrap-5.3.3-dist/js/bootstrap.bundle.min.js"></script>
+    <!-- FIN ESTILOS BOOTSTRAP  (DESCARGADO)  CSS JS -->
+    <title>ABM Usuarios</title>
+</head>
+
+<body>
+    <header class="light-background">
+        <h1>
+            Administrador de Usuarios
+        </h1>
+    </header>
+
+    <!--
+    empieza main
+    -->
+    <main>
+        <!-- empieza seccion tabla -->
+        <section class="usuarios-tabla">
+            <h2>Filtro Tabla Usuarios</h2>
+            <div class="input-group mb-3">
+                <!-- botones filtro de tabla -->
+                <button type="menu" class="btn btn-outline-secondary active" id="VerTodos"
+                    class="headerActionButton active" title="Ver todos los Usuarios">Todos</button>
+
+                <button type="menu" class="btn btn-outline-secondary" id="VerActivos" class="headerActionButton"
+                    title="Ver todos los Usuarios Activos">Activos</button>
+
+                <button type="menu" class="btn btn-outline-secondary" id="VerEliminados" class="headerActionButton"
+                    title="Ver todos los Usuarios Eliminados">Eliminados</button>
+
+                <button class="btn btn-outline-primary" id="VerById" class="headerActionButton"
+                    type="button">Buscar</button>
+                <input type="text" class="form-control" id="input-id" placeholder="id usuario">
+            </div>
+            <!-- tabla predefinida -->
+            <div class="container mt-3" id="container-mt-3">
+                <!-- inserción por js -->
+            </div>
+        </section>
+        <!-- termina seccion tabla -->
+        <!-- empieza seccion abm usuarios -->
+        <section class="usuarios-acciones">
+            <div class="usuarios-acciones-crud">
+                <h2>ABM Usuarios</h2>
+                <div class="input-group mb-3">
+                    <!--empieza modal-->
+                    <button type="button" class="btn btn-info" data-bs-toggle="modal"
+                        data-bs-target="#myModal">Agregar</button>
+                    <!-- The Modal -->
+                    <div class="modal" id="myModal">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <!-- Modal Header -->
+                                <div class="modal-header">
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                </div>
+
+                                <!-- Modal body -->
+                                <div class="modal-body">
+                                    <div class="container mt-3">
+                                        <form action="">
+                                            <div class="mb-3">
+                                                <label>Nombre y Apellido:</label>
+                                                <input type="text" class="form-control" id="nombre_apellido"
+                                                    placeholder="Enter your Name" name="nombre_apellido">
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="pwd">Password:</label>
+                                                <input type="password" class="form-control" id="password"
+                                                    placeholder="Enter password" name="password">
+                                            </div>
+                                            <div class="mb-3">
+                                                <label>Foto perfil</label>
+                                                <input type="text" class="form-control" id="foto_perfil"
+                                                    placeholder="Enter path" name="foto_perfil">
+                                            </div>
+                                            <div class="mb-3 ">
+                                                <label>Perfil acceso</label>
+                                                <select class="form-select" id="perfil">
+                                                    <option>usuario</option>
+                                                    <option>administrador</option>
+                                                  </select>
+                                            </div>
+                                            <button type="submit" class="btn btn-primary" onclick="add_new_user()">Submit</button>
+                                        </form>
+                                    </div>
+                                </div>
+
+                                <!-- Modal footer -->
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <!-- termina modal-->
+                    <button type="button" id="editar" class="btn btn-warning">Editar</button>
+                    <button type="button" id="eliminar" class="btn btn-danger">Eliminar</button>
+                </div>
+            </div>
+            </div>
+        </section>
+        <!--     termina seccion adm usuarios -->
+    </main>
+
+    <!--
+    termina main
+    -->
+    <!-- función fechData que recibe parametros para ejecutar: GET POST PUT DELETE    -->
+    <script src="js/fetchData.js"></script>
+    <!-- funciones de vista de tabla filtro    -->
+    <script src="js/index.js"></script>
+</body>
+
+</html>
