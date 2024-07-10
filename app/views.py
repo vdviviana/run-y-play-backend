@@ -45,14 +45,7 @@ def get_users():
     ]
     return jsonify(users) 
 
-# -------------- recibe id devuelve usuarios por id en base de datos  ----------------
-# ----
-# 
-def get_users_byid(users_id):
- users = {
- 'idusuario': users_id,
- }
- return jsonify(users)
+
 
 # -------------- recibe peticion request, toma datos recibidos  ----------------
 # ---- crea nuevo users
@@ -63,11 +56,11 @@ def create_new_user():
     new_user = Users(
         nombre_apellido=data['nombre_apellido'],
         password=data['password'],
-        primera_conexion=date.today().strftime('%Y-%m-%d'),
-        ultima_conexion=date.today().strftime('%Y-%m-%d'),
+        primera_conexion='2024-07-06 00:00:00',
+        ultima_conexion='2024-07-06 00:00:00',
         foto_perfil=data['foto_perfil'],
         perfil=data['perfil'],
-        estado=data['estado']
+        estado=data['estado'] 
     )
     new_user.save()
     return jsonify({'message': 'User created successfully'}), 201
@@ -84,18 +77,27 @@ def update_users_byid(users_id):
 # --------------  ----------------
 # ---- 
 # 
-def get_view_users_all():
+def get_view_users_all(): 
     users = Users.get_users_all()
-    return jsonify([users.serialize() for user in users])
+    return jsonify([user.serialize() for user in users])
 
-def get_view_users_estado_true():
-    users = Users.get_users_estado_true()
-    return jsonify([users.serialize() for user in users])
+def get_view_users_active():
+    users = Users.get_users_active()
+    return jsonify([user.serialize() for user in users])
 
-def get_view_users_estado_false():
-    users = Users.get_users_estado_false()
-    return jsonify([users.serialize() for user in users])
+def get_view_users_delete():
+    users = Users.get_users_delete()
+    return jsonify([user.serialize() for user in users])
 
-# --------------  ----------------
-# ---- 
+# --------------  
+# -------------- recibe id devuelve usuarios por id en base de datos  ----------------
+# ----
+# 
+def get_users_byid(users_id):
+    user = Users.get_by_id(users_id)
+    if not user:
+        return jsonify({'message': 'User not found'}), 404
+    return jsonify(user.serialize())
+# --------------  
+# ----
 # 

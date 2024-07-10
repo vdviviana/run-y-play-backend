@@ -9,7 +9,13 @@ app =Flask(__name__)
 app.route('/', methods=['GET'])(index)
 
 # ruta funcion de la vista -> consulta usuarios
-app.route('/api/users/all', methods=['GET'])(get_view_users_all)
+app.route('/api/users/all/', methods=['GET'])(get_view_users_all)
+
+# ruta funcion de la vista -> filtro consulta usuarios activos
+app.route('/api/users/activos/', methods=['GET'])(get_view_users_active)
+
+# ruta funcion de la vista -> filtro consulta usuarios eliminados
+app.route('/api/users/delete/', methods=['GET'])(get_view_users_delete)
 
 # ruta de funcion de la vista -> consulta user por id
 app.route('/api/users/byid/<int:users_id>', methods=['GET'])(get_users_byid)
