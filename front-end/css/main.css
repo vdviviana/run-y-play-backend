@@ -1,0 +1,40 @@
+.headerActionButton {
+    color: rgb(49, 51, 138);
+    border: 1px 0.5px;
+    
+    background-color: transparent;
+    
+    font-family: 'Roboto';
+    font-weight: 200;
+    font-size: 0.75em;
+
+    transition: all 0.2s;
+ 
+}
+
+.headerActionButton.active {
+    color: rgb(73, 85, 164);
+    text-decoration: underline;
+}
+
+.headerActionButton:hover {
+    color: rgb(179, 186, 245);
+    cursor: pointer;
+}
+
+button {
+    margin: 0 5px;
+    color: rgb(12, 100, 101);
+    transition: all 0.2s;
+    
+    border: 0.5px 0.5px;
+    background-color: transparent;
+    font-size: 1em;
+}
+button:hover {
+    cursor: pointer;
+}
+
+.form-control{
+   /*max-width: 110px !important*/
+}
